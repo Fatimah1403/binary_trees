@@ -14,18 +14,21 @@ size_t binary_tree_height(const binary_tree_t *tree)
 	right_height = 0;
 
 	if (tree == NULL)
-	{
 		return (0);
-	}
-	else
+
+	/* find the height of left, right subtree. */
+	if (tree->left)
 	{
-		/* find the height odf left, right subtree. */
 		left_height = binary_tree_height(tree->left);
+		left_height += 1;
+	}
+	if (tree->right)
+	{
 		right_height = binary_tree_height(tree->right);
-
-		return (max(left_height, right_height) + 1);
+		right_height += 1;
 
 	}
+	return (right_height > left_height ? left_height : right_height);
 
 
 }
