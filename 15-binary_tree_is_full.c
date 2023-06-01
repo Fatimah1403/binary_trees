@@ -7,7 +7,7 @@
  * Return: the number of leaves in the tree.
  */
 
-size_t binary_tree_is_full(const binary_tree_t *tree)
+int binary_tree_is_full(const binary_tree_t *tree)
 {
 
 	if (!tree)
