@@ -1,2 +1,5 @@
 # C test files
 test.c
+
+# vim swp files
+*.swp
