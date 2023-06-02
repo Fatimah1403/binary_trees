@@ -1,6 +1,4 @@
 #include "binary_trees.h"
-#include <stdio.h>
-#include <stdlib.h>
 
 /**
  * _recur_depth - Determines the depth of a node in a binary tree
