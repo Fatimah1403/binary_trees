@@ -132,6 +132,7 @@ bst_t *bst_remove(bst_t *root, int value)
 			node->left->parent = node->parent;
 			if (root == node)
 				root = node->left;
+
 			free(node);
 		}
 	}
