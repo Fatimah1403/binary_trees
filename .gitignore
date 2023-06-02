@@ -3,3 +3,10 @@ test.c
 
 # vim swp files
 *.swp
+
+# Other files
+100-main.c
+test.c
+test
+binary_tree_print.c
+*-main.c
