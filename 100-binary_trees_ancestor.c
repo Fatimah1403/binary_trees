@@ -1,6 +1,4 @@
 #include "binary_trees.h"
-#include <stdio.h>
-#include <stdlib.h>
 
 /**
  * _recur_depth - Determines the depth of a node in a binary tree
@@ -38,7 +36,7 @@ size_t binary_tree_depth(const binary_tree_t *node)
  * Return: Pointer to the lowest common ancestor
  */
 binary_tree_t *binary_tree_ancestor(const binary_tree_t *first,
-				const binary_tree_t *second)
+		const binary_tree_t *second)
 {
 	size_t first_depth, second_depth;
 
