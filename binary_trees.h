@@ -2,6 +2,13 @@
 #define BINARY_TREES_H
 
 #include <stdio.h>
+#include <stdlib.h>
+#include <stddef.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+#include <math.h>
+#include <limits.h>
 
 /**
  * struct binary_tree_s - Binary tree node
@@ -54,9 +61,13 @@ int binary_tree_is_perfect(const binary_tree_t *tree);
 binary_tree_t *binary_tree_sibling(binary_tree_t *node);
 binary_tree_t *binary_tree_uncle(binary_tree_t *node);
 
+/* binary_tree_print.c */
+void binary_tree_print(const binary_tree_t *);
+
 
 /* Advanced tasks prototypes */
-binary_tree_t *binary_trees_ancestor(const binary_tree_t *first, const binary_tree_t *second);
+binary_tree_t *binary_trees_ancestor(const binary_tree_t *first,
+					const binary_tree_t *second);
 void binary_tree_levelorder(const binary_tree_t *tree, void (*func)(int));
 int binary_tree_is_complete(const binary_tree_t *tree);
 binary_tree_t *binary_tree_rotate_left(binary_tree_t *tree);
@@ -77,6 +88,31 @@ heap_t *array_to_heap(int *array, size_t size);
 int heap_extract(heap_t **root);
 int *heap_to_sorted_array(heap_t *heap, size_t *size);
 void binary_tree_print(const binary_tree_t *);
+
+
+/* helper functions */
+
+size_t binary_tree_depth(const binary_tree_t *node);
+void btlo_helper(const binary_tree_t *tree, void (*func)(int), size_t level);
+size_t binary_tree_height(const binary_tree_t *tree);
+int is_tree_complete(const binary_tree_t *tree, int i, int n);
+size_t binary_tree_size(const binary_tree_t *tree);
+int node_is_leaf(const binary_tree_t *node);
+int check_parent(const binary_tree_t *node);
+int check_is_bst(const binary_tree_t *tree);
+bst_t *insert_node(bst_t **tree, int value);
+bst_t *bst_search(const bst_t *tree, int value);
+int node_is_leaf(const binary_tree_t *node);
+bst_t *remove_node_r(bst_t *node, bst *root);
+bst_t *remove_node_l(bst_t *node, bst *root);
+
+
+
+
+
+
+
+
 
 
 
