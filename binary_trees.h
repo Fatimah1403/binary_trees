@@ -92,38 +92,15 @@ void binary_tree_print(const binary_tree_t *);
 
 /* helper functions */
 
-size_t binary_tree_depth(const binary_tree_t *node);
+int _pow_recursion(int x, int y);
+binary_tree_t *bta_helper(binary_tree_t *root, const binary_tree_t *first,
+			  const binary_tree_t *second);
 void btlo_helper(const binary_tree_t *tree, void (*func)(int), size_t level);
-size_t binary_tree_height(const binary_tree_t *tree);
-int is_tree_complete(const binary_tree_t *tree, int i, int n);
-size_t binary_tree_size(const binary_tree_t *tree);
-int node_is_leaf(const binary_tree_t *node);
-int check_parent(const binary_tree_t *node);
-int check_is_bst(const binary_tree_t *tree);
-bst_t *insert_node(bst_t **tree, int value);
-bst_t *bst_search(const bst_t *tree, int value);
-int node_is_leaf(const binary_tree_t *node);
-bst_t *remove_node_r(bst_t *node, bst *root);
-bst_t *remove_node_l(bst_t *node, bst *root);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+int btic_helper(const binary_tree_t *tree, size_t index, size_t size);
+int btib_helper(const binary_tree_t *tree, int low, int hi);
+bst_t *bst_min_val(bst_t *root);
+int btia_helper(const binary_tree_t *tree, int low, int hi);
+int btih_helper(const binary_tree_t *tree);
+void sata_helper(avl_t **root, int *array, size_t lo, size_t hi);
 
 #endif
