@@ -1,17 +1,5 @@
 #include "binary_trees.h"
 
-/**
- * _recur_depth - Determines the depth of a node in a binary tree
- * @tree: Pointer to a binary tree node.
- * Return: the depth of a node in binary tree
- */
-size_t _recur_depth(const binary_tree_t *tree)
-{
-	if (!tree)
-		return (-1);
-	return (_recur_depth(tree->parent) + 1);
-}
-
 
 /**
  * binary_tree_depth - measures the depth of a binary tree recursively.
@@ -21,10 +9,16 @@ size_t _recur_depth(const binary_tree_t *tree)
  */
 size_t binary_tree_depth(const binary_tree_t *node)
 {
+	size_t depth = 0;
+
 	if (node == NULL)
 		return (0);
-
-	return (_recur_depth(node));
+	while (node->parent)
+	{
+		depth++;
+		node = node->parent;
+	}
+	return (depth);
 }
 
 /**
@@ -49,11 +43,22 @@ binary_tree_t *binary_tree_ancestor(const binary_tree_t *first,
 	first_depth = binary_tree_depth(first);
 	second_depth = binary_tree_depth(second);
 
-	if (first_depth >  second_depth)
-		return (binary_trees_ancestor(first->parent, second));
-
-	if (binary_tree_depth(first) < binary_tree_depth(second))
-		return (binary_trees_ancestor(first, second->parent));
-
-	return (binary_trees_ancestor(first->parent, second->parent));
+	while (first_depth > second_depth)
+	{
+		first = first->parent;
+		first_depth--;
+	}
+	while (second_depth > first_depth)
+	{
+		second = second->parent;
+		second_depth--;
+	}
+	while (first && second)
+	{
+		if (first == second)
+			return ((binary_tree_t *)first);
+		first = first->parent;
+		second = second->parent;
+	}
+	return ((binary_tree_t *)first);
 }
