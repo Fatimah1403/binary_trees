@@ -1,23 +1,20 @@
 #include "binary_trees.h"
 
 /**
- * array_to_heap - Builds a Max binary heap tree from an array.
+ * array_to_heap - builds a Max Binary Heap tree from an array
+ * @array: a pointer to the first element of the array to be converted
+ * @size: the number of element in the array
  *
- * @array: pointer to the first element of the given array.
- * @size: size of the array.
- * Return: Pointer to the root node of the AVL tree.
+ * Return: a pointer to the root node of the created Binary Heap
+ *         NULL on failure
  */
 heap_t *array_to_heap(int *array, size_t size)
 {
-	heap_t *tree;
-	size_t i;
-
-	tree = NULL;
+	unsigned int i;
+	heap_t *root = NULL;
 
 	for (i = 0; i < size; i++)
-	{
-		heap_insert(&tree, array[i]);
-	}
+		heap_insert(&root, array[i]);
 
-	return (tree);
+	return (root);
 }

@@ -1,6 +1,9 @@
 #include "binary_trees.h"
+<<<<<<< HEAD
+=======
 #include <stdio.h>
 #include <stdlib.h>
+>>>>>>> 74902f492c8a9e58c246ac66003ae28c04a8ae8f
 
 /**
  * binary_tree_levelorder - traverst a binary tree using level-order traverse
