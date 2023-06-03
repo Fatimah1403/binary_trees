@@ -1,64 +1,56 @@
-ude "binary_trees.h"
-#include <stdio.h>
-#include <stdlib.h>
+#include "binary_trees.h"
 
 /**
- * binary_tree_size - Determines the size of a binary tree
- * @tree: Pointer to a binary tree node.
- * Return: the size of a binary tree
+ * binary_tree_levelorder - traverst a binary tree using level-order traverse
+ * @tree: tree to traverse
+ * @func: pointer to a function to call for each node
  */
-size_t binary_tree_size(const binary_tree_t *tree)
+void binary_tree_levelorder(const binary_tree_t *tree, void (*func)(int))
 {
-	if (!tree)
-		return (0);
+	size_t level, maxlevel;
 
-	left = binary_tree_size(tree->left);
-	right = binary_tree_size(tree->right);
+	if (!tree || !func)
+		return;
 
-	return (left + right + 1);
+	maxlevel = binary_tree_height(tree) + 1;
+
+	for (level = 1; level <= maxlevel; level++)
+		btlo_helper(tree, func, level);
 }
 
-
 /**
- * is_tree_complete - Determines if a tree is complete or not.
- *
- * @tree: Pointer to the root node of the tree.
- * @i: Node index.
- * @n: Number of nodes.
- *
- * Return: 1 if tree is complete else 0.
+ * btlo_helper - goes through a binary tree using post-order traverse
+ * @tree: tree to traverse
+ * @func: pointer to a function to call for each node
+ * @level: the level of the tree to call func upon
  */
-int is_tree_complete(const binary_tree_t *tree, int i, int n)
+void btlo_helper(const binary_tree_t *tree, void (*func)(int), size_t level)
 {
-	if (!tree)
-		return (1);
-
-	if (i > n)
-		return (0);
-
-	return (
-		tree_is_complete(tree->left, (2 * i) + 1, n) &&
-		tree_is_complete(tree->right, (2 * i) + 2, n)
-	);
+	if (level == 1)
+		func(tree->n);
+	else
+	{
+		btlo_helper(tree->left, func, level - 1);
+		btlo_helper(tree->right, func, level - 1);
+	}
 }
 
-
-
 /**
- * binary_tree_is_complete - Checks if a given tree is complete.
+ * binary_tree_height - measures the height of a binary tree
+ * @tree: tree to measure the height of
  *
- * @tree: Pointer to the tree root node.
- *
- * Return: 1 if tree is complete else 0.
+ * Return: height of the tree
+ *         0 if tree is NULL
  */
-int binary_tree_is_complete(const binary_tree_t *tree)
+size_t binary_tree_height(const binary_tree_t *tree)
 {
-	size_t size;
+	size_t height_l = 0;
+	size_t height_r = 0;
 
 	if (!tree)
 		return (0);
 
-	size = binary_tree_size(tree);
-
-	return (is_tree_complete(tree, 0, size));
+	height_l = tree->left ? 1 + binary_tree_height(tree->left) : 0;
+	height_r = tree->right ? 1 + binary_tree_height(tree->right) : 0;
+	return (height_l > height_r ? height_l : height_r);
 }
